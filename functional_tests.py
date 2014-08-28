@@ -11,6 +11,11 @@ class NewVisitorTest(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
+    def check_for_row_in_list_table(self, row_text):
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(row_text, [row.text for row in rows])
+
     def test_can_start_a_list_and_retrieve_it_later(self):
         # Rufus has returned from the future with a message for Bill and Ted that there is a cool new
         # online to-do app they should use to organize their excellent time traveling adventures.
@@ -35,10 +40,7 @@ class NewVisitorTest(unittest.TestCase):
         # When they hit enter, the page updates, and now the page lists
         # "1. Visit North Korea 1948" as a to-do list item
         inputbox.send_keys(Keys.ENTER)
-
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn('1. Visit North Korea 1948', [row.text for row in rows]),
+        self.check_for_row_in_list_table('1. Visit North Korea 1948')
 
         # There is still a text-box for them to enter another item. They enter,
         # "Assassinate Kim Il-sung"
@@ -47,10 +49,8 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys(Keys.ENTER)
 
         # The page updates again, and now shows both items on their list
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn('1. Visit North Korea 1948', [row.text for row in rows])
-        self.assertIn('2. Assassinate Kim Il-sung', [row.text for row in rows])
+        self.check_for_row_in_list_table('1. Visit North Korea 1948')
+        self.check_for_row_in_list_table('2. Assassinate Kim Il-sung')
 
         # Bill and Ted wonder whether the site will remember their list. Then they see that
         # the site has generated a unique URL for them -- there is some explanatory text to that effect
