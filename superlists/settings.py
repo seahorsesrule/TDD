@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -49,9 +49,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'superlists.urls'
+ROOT_URLCONF = 'lists.urls'
 
-WSGI_APPLICATION = 'superlists.wsgi.application'
+WSGI_APPLICATION = 'lists.wsgi.application'
 
 
 # Database
