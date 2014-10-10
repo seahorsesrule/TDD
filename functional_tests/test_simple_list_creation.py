@@ -40,8 +40,8 @@ class NewVisitorTest(FunctionalTest):
         inputbox.send_keys(Keys.ENTER)
 
         # The page updates again, and now shows both items on their list
-        self.check_for_row_in_list_table('1. Visit North Korea 1948')
         self.check_for_row_in_list_table('2. Assassinate Kim Il-sung')
+        self.check_for_row_in_list_table('1. Visit North Korea 1948')
 
         # Now a new user, Rufus, comes along to the site.
 
