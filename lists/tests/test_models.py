@@ -50,7 +50,7 @@ class ItemModelTests(TestCase):
         item = Item(text='some text')
         self.assertEqual(str(item), 'some text')
 
-        
+
 class ListModelTest(TestCase):
 
     def test_get_absolute_url(self):
