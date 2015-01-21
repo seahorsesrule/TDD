@@ -2,3 +2,5 @@ db.sqlite3
 db3.sqlite3
 __pycache__
 *.pyc
+secret_key.txt
+.idea
